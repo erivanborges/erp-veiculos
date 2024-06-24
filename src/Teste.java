@@ -25,6 +25,63 @@ public class Teste {
         System.out.println("########### ATENÇÃO ###########");
         System.out.println(" ");
         
+        boolean continuar = true;
+        int opcao = 0;
+        
+        while (continuar) {
+            System.out.println("\n\t\t\tMENU INICIAL");
+            System.out.println("\t(1) Cadastrar veículo de PASSEIO");
+            System.out.println("\t(2) Cadastrar veículo de CARGA");
+            System.out.println("\t(3) Imprimir todos os veículos de PASSEIO");
+            System.out.println("\t(4) Imprimir todos os veículos de CARGA");
+            System.out.println("\t(5) Imprimir todos os veículos de PASSEIO pela placa");
+            System.out.println("\t(6) Imprimir todos os veículos de CARGA pela placa");
+            System.out.println("\t(7) Sair do sistema");
+            
+            try {
+                ler = new Scanner(System.in);
+                System.out.println("\n\tEscolha uma opção");
+                opcao = ler.nextInt();
+            } catch (NumberFormatException ex){
+                System.out.println("Favor informar um valor inteiro - Press <ENTER>");
+                System.out.println("");
+                continue;
+            }
+            
+            switch (opcao) {
+                case 1:
+                    for (int i = achaVagoPasseio(); i < vetVeiculoPasseio.length; i++) {
+                        if (i == -1) {
+                            System.out.println("\tVetor de PASSEIO está cheio! press <ENTER>");
+                            ler = new Scanner(System.in);
+                            ler.next();
+                            break;
+                        }
+                        
+                        veiculoPasseio = new Passeio();
+                        vetVeiculoPasseio[i] = cadastraVeiculoPasseio(veiculoPasseio);
+                        
+                        System.out.println("\nVeículo de PASSEIO armazenado na posição " + i + "do vetor.");
+                        
+                        System.out.println("\nDeseja cadastrar outro veículo de PASSEIO? <s/n>");
+                        ler = new Scanner(System.in);
+                        String respPasseio = ler.next();
+                        
+                        if (respPasseio.equalsIgnoreCase("n")) {
+                            break;
+                        }
+                        if (achaVagoPasseio() == -1) {
+                            System.out.println("\tVetor de PASSEIO está cheio! press <ENTER>");
+                            break;
+                        }
+                    }
+                case 7: 
+                    continuar = false;
+                    break;
+                
+            }
+        }
+        
     }
     
     public static int achaVagoPasseio() {
