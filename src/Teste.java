@@ -61,7 +61,7 @@ public class Teste {
                         veiculoPasseio = new Passeio();
                         vetVeiculoPasseio[i] = cadastraVeiculoPasseio(veiculoPasseio);
                         
-                        System.out.println("\nVeículo de PASSEIO armazenado na posição " + i + "do vetor.");
+                        System.out.println("\nVeículo de PASSEIO armazenado na posição " + i + " do vetor.");
                         
                         System.out.println("\nDeseja cadastrar outro veículo de PASSEIO? <s/n>");
                         ler = new Scanner(System.in);
@@ -72,6 +72,31 @@ public class Teste {
                         }
                         if (achaVagoPasseio() == -1) {
                             System.out.println("\tVetor de PASSEIO está cheio! press <ENTER>");
+                            break;
+                        }
+                    }
+                case 2:
+                    for (int i = achaVagoCarga(); i < vetVeiculoCarga.length; i++) {
+                        if (i == -1) {
+                            System.out.println("\tVetor de CARGA está cheio! - press <ENTER>");
+                            ler = new Scanner(System.in);
+                            ler.next();
+                        }
+                        
+                        veiculoCarga = new Carga();
+                        vetVeiculoCarga[i] = cadastraVeiculoCarga(veiculoCarga);
+                        
+                        System.out.println("\nVeículo de CARGA foi armazenado na posição " + i +" do vetor.");
+                        
+                        System.out.println("\nDeseja cadastrar outro veículo de CARGA? <s/n>");
+                        ler = new Scanner(System.in);
+                        String respCarga = ler.next();
+                        
+                        if (respCarga.equalsIgnoreCase("n")) {
+                            break;
+                        }
+                        if (achaVagoCarga() == -1) {
+                            System.out.println("\nVetor de CARGA está cheio!");
                             break;
                         }
                     }
