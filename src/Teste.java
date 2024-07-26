@@ -101,6 +101,58 @@ public class Teste {
                         }
                     }
                     break;
+                case 3:
+                    System.out.println("\nVeículo de PASSEIO - Imprimindo TODOS os veículos.");
+                    System.out.println("====================================================");
+                    for (int i = 0; i < vetVeiculoPasseio.length; i++) {
+                        if (vetVeiculoPasseio[i] != null) {
+                            imprimeVeiculoPasseio(vetVeiculoPasseio[i], i);
+                        } else {
+                            Scanner s = new Scanner(System.in);
+                            System.out.println("\nSem mais veículos de PASSEIO para imprimir - press <ENTER>");
+                            s.nextLine();
+                        }
+                    }
+                    System.out.println("======================================================");
+                    break;
+                case 4:
+                    System.out.println("\nVeículo de CARGA - Imprimindo TODOS os veículos.");
+                    System.out.println("==================================================");
+                    for (int i = 0; i < vetVeiculoCarga.length; i++) {
+                        if (vetVeiculoCarga[i] != null) {
+                            imprimeVeiculoCarga(vetVeiculoCarga[i], i);
+                        } else {
+                            Scanner s = new Scanner(System.in);
+                            System.out.println("\nSem mais veículos de CARGA para imprimir - press <ENTER>");
+                            s.nextLine();
+                        }   
+                    }
+                    System.out.println("=======================================================");
+                    break;
+                case 5:
+                    System.out.println("\nConsultar veículo pela PLACA - Veículo de PASSEIO");
+                    System.out.println("===================================================");
+                    
+                    veiculoPasseio = new Passeio();
+                    
+                    System.out.println("\nInforme a placa a ser pesquisada");
+                    String placaVeicPasseio = ler.next();
+                    
+                    veiculoPasseio.setPlaca(placaVeicPasseio);
+                    
+                    for (int i = 0; i < vetVeiculoPasseio.length; i++) {
+                        if (vetVeiculoPasseio[i].getPlaca().equalsIgnoreCase(veiculoPasseio.getPlaca())) {
+                            imprimeVeiculoPasseio(vetVeiculoPasseio[i], i);
+                            break;
+                        } else {
+                            Scanner s = new Scanner(System.in);
+                            System.out.println("\n\n\t\t\t========= Não existe veículo de PASSEIO com está PLACA *" 
+                                    + placaVeicPasseio + "* - press <ENTER>");
+                            s.nextLine();
+                        }
+                        
+                    }
+                    break;
                 case 7:
                     continuar = false;
                     break;
