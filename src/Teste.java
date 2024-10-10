@@ -1,5 +1,7 @@
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,9 +15,6 @@ public class Teste {
 
     private static Passeio veiculoPasseio;
     private static Carga veiculoCarga;
-
-    private static Passeio[] vetVeiculoPasseio = new Passeio[5];
-    private static Carga[] vetVeiculoCarga = new Carga[5];
 
     private static Scanner ler = new Scanner(System.in);
 
@@ -153,6 +152,29 @@ public class Teste {
                         
                     }
                     break;
+                case 6:
+                    System.out.println("\nConsultar veículo pela PLACA - Veículo de CARGA");
+                    System.out.println("=================================================");
+                    
+                    veiculoCarga = new Carga();
+                    System.out.println("\nInforme a placa a ser pesquisada");
+                    String placaVeicCarga = ler.next();
+                    
+                    veiculoCarga.setPlaca(placaVeicCarga);
+                    
+                    for (int i = 0; i < vetVeiculoCarga.length; i++) {
+                        if (vetVeiculoCarga[i].getPlaca().equalsIgnoreCase(veiculoCarga.getPlaca())) {
+                            imprimeVeiculoCarga(veiculoCarga, i);
+                            break;
+                        } else {
+                            Scanner s = new Scanner(System.in);
+                            System.out.println("\n\n\t\t\t======== Não existe veículo de Carga com está PLACA *"
+                                    + placaVeicCarga + "* - press <ENTER>");
+                            s.nextLine();
+                        }
+                        
+                    }
+                    break;
                 case 7:
                     continuar = false;
                     break;
@@ -220,7 +242,11 @@ public class Teste {
         System.out.println("Qtdade de Rodas...................:");
         veiculoPasseio.setQtdRodas(ler.nextInt());
         System.out.println("Veloc. Máxima.....................:");
-        veiculoPasseio.setVelocMax(ler.nextFloat());
+        try {
+            veiculoPasseio.setVelocMax(ler.nextFloat());
+        } catch (VelocException ex) {
+            ex.impVelocEx();
+        }
         System.out.println("Qtdade de Passageiros.............:");
         veiculoPasseio.setQtdPassageiros(ler.nextInt());
         System.out.println("Potência do Motor.................:");
@@ -245,7 +271,11 @@ public class Teste {
         System.out.println("Qtdade de Rodas...................:");
         veiculoCarga.setQtdRodas(ler.nextInt());
         System.out.println("Veloc. Máxima.....................:");
-        veiculoCarga.setVelocMax(ler.nextFloat());
+        try {
+            veiculoCarga.setVelocMax(ler.nextFloat());
+        } catch (VelocException ex) {
+           ex.impVelocEx();
+        }
         System.out.println("Carga Máxima......................:");
         veiculoCarga.setCargaMax(ler.nextInt());
         System.out.println("Tara..............................:");

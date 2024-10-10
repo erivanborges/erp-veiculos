@@ -8,7 +8,7 @@
  * @author Administrador
  */
 public abstract class Veiculo {
-    
+
     private String placa;
     private String marca;
     private String modelo;
@@ -16,8 +16,8 @@ public abstract class Veiculo {
     private float velocMax;
     private int qtdRodas;
     private Motor motor;
-    
-    public Veiculo(){
+
+    public Veiculo() {
         this.placa = "";
         this.marca = "";
         this.modelo = "";
@@ -26,9 +26,9 @@ public abstract class Veiculo {
         this.qtdRodas = 0;
         this.motor = new Motor();
     }
-    
+
     public Veiculo(String placa, String marca, String modelo, String cor,
-            float velocMax, int qtdRodas, Motor motor){
+            float velocMax, int qtdRodas, Motor motor) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
@@ -104,8 +104,12 @@ public abstract class Veiculo {
     /**
      * @param velocMax the velocMax to set
      */
-    public void setVelocMax(float velocMax) {
-        this.velocMax = velocMax;
+    public void setVelocMax(float velocMax) throws VelocException {
+        if (velocMax < 80 && velocMax > 110) {
+            this.velocMax = velocMax;
+        } else {
+            throw new VelocException();
+        }
     }
 
     /**
@@ -135,7 +139,7 @@ public abstract class Veiculo {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
-    
+
     public abstract float calcVel(float velocMax);
-    
+
 }
