@@ -71,11 +71,6 @@ public class Teste {
                         if (respPasseio.equalsIgnoreCase("n")) {
                             break;
                         }
-                        if (achaVagoPasseio() == -1) {
-                            System.out.println("\tVetor de PASSEIO está cheio! press <ENTER>");
-                            s.nextLine();
-                            break;
-                        }
                     }
                     break;
                 case 2:
