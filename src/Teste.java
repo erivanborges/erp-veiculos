@@ -63,40 +63,39 @@ public class Teste {
                             break;
                         }
 
-                        System.out.println("\nVeículo de PASSEIO armazenado na posição " + i + " do vetor.");
-
+                        Scanner s = new Scanner(System.in);
                         System.out.println("\nDeseja cadastrar outro veículo de PASSEIO? <s/n>");
                         String respPasseio = s.nextLine();
 
                         if (respPasseio.equalsIgnoreCase("n")) {
-                            break;
+                            sairPasseio = true;
                         }
                     }
                     break;
                 case 2:
-                    for (int i = achaVagoCarga(); i < vetVeiculoCarga.length; i++) {
-                        Scanner s = new Scanner(System.in);
-                        if (i == -1) {
-                            System.out.println("\tVetor de CARGA está cheio! press <ENTER>");
-                            s.nextLine();
-                        }
+                    boolean sairCarga = false;
+                    while (!sairCarga) {
 
                         veiculoCarga = new Carga();
-                        vetVeiculoCarga[i] = cadastraVeiculoCarga(veiculoCarga);
+                        veiculoCarga = cadastraVeiculoCarga(veiculoCarga);
 
-                        System.out.println("\nVeículo de CARGA foi armazenado na posição " + i + " do vetor.");
+                        try {
+                            if (bdveic.verifCargaExist(veiculoCarga)) {
+                                bdveic.getListaCarga().add(veiculoCarga);
+                            }
+                        } catch (VeicExistException ex) {
+                            ex.impVeicExistEx();
+                            break;
+                        }
 
+                        Scanner s = new Scanner(System.in);
                         System.out.println("\nDeseja cadastrar outro veículo de CARGA? <s/n>");
                         String respCarga = s.next();
 
                         if (respCarga.equalsIgnoreCase("n")) {
-                            break;
+                            sairCarga = true;
                         }
-                        if (achaVagoCarga() == -1) {
-                            System.out.println("\tVetor de CARGA está cheio! press <ENTER>");
-                            s.nextLine();
-                            break;
-                        }
+
                     }
                     break;
                 case 3:
