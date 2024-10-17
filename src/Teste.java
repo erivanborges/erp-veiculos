@@ -101,9 +101,9 @@ public class Teste {
                 case 3:
                     System.out.println("\nVeículo de PASSEIO - Imprimindo TODOS os veículos.");
                     System.out.println("====================================================");
-                    for (int i = 0; i < vetVeiculoPasseio.length; i++) {
-                        if (vetVeiculoPasseio[i] != null) {
-                            imprimeVeiculoPasseio(vetVeiculoPasseio[i], i);
+                    for (int i = 0; i < bdveic.getListaPasseio().size(); i++) {
+                        if (bdveic.getListaPasseio().get(i) != null) {
+                            bdveic.imprimeVeiculoPasseio(bdveic.getListaPasseio().get(i), i);
                         } else {
                             Scanner s = new Scanner(System.in);
                             System.out.println("\nSem mais veículos de PASSEIO para imprimir - press <ENTER>");
@@ -115,9 +115,9 @@ public class Teste {
                 case 4:
                     System.out.println("\nVeículo de CARGA - Imprimindo TODOS os veículos.");
                     System.out.println("==================================================");
-                    for (int i = 0; i < vetVeiculoCarga.length; i++) {
-                        if (vetVeiculoCarga[i] != null) {
-                            imprimeVeiculoCarga(vetVeiculoCarga[i], i);
+                    for (int i = 0; i < bdveic.getListaCarga().size(); i++) {
+                        if (bdveic.getListaCarga().get(i) != null) {
+                            bdveic.imprimeVeiculoCarga(bdveic.getListaCarga().get(i), i);
                         } else {
                             Scanner s = new Scanner(System.in);
                             System.out.println("\nSem mais veículos de CARGA para imprimir - press <ENTER>");
