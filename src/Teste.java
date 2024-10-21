@@ -137,7 +137,7 @@ public class Teste {
 
                     veiculoPasseio.setPlaca(placaVeicPasseio);
 
-                    for (int i = 0; i < vetVeiculoPasseio.length; i++) {
+                    for (int i = 0; i < bdveic.getListaPasseio().size(); i++) {
                         if (vetVeiculoPasseio[i].getPlaca().equalsIgnoreCase(veiculoPasseio.getPlaca())) {
                             imprimeVeiculoPasseio(vetVeiculoPasseio[i], i);
                             break;
