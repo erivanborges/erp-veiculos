@@ -136,20 +136,26 @@ public class Teste {
                     String placaVeicPasseio = ler.next();
 
                     veiculoPasseio.setPlaca(placaVeicPasseio);
+                    
+                    boolean existVeicPlacaPasseio = false;
 
                     for (int i = 0; i < bdveic.getListaPasseio().size(); i++) {
-                        if (vetVeiculoPasseio[i].getPlaca().equalsIgnoreCase(veiculoPasseio.getPlaca())) {
-                            imprimeVeiculoPasseio(vetVeiculoPasseio[i], i);
-                            break;
-                        } else {
-                            Scanner s = new Scanner(System.in);
-                            System.out.println("\n\n\t\t\t========= Não existe veículo de PASSEIO com está PLACA *"
-                                    + placaVeicPasseio + "* - press <ENTER>");
-                            s.nextLine();
+                        if (bdveic.getListaPasseio().get(i) != null) {
+                            if (bdveic.getListaPasseio().get(i).getPlaca().equalsIgnoreCase(placaVeicPasseio)) {
+                                bdveic.imprimeVeiculoPasseio(bdveic.getListaPasseio().get(i), i);
+                                existVeicPlacaPasseio = true;
+                                break;
+                            }
                         }
-
                     }
+                    
+                    if (!existVeicPlacaPasseio) {
+                        System.out.println("\n\n\t\t\t NÃO existe veículo de PASSEIO com está PLACA *" + placaVeicPasseio + "*.");
+                        System.out.println(" ");
+                    }
+                    
                     break;
+                    
                 case 6:
                     System.out.println("\nConsultar veículo pela PLACA - Veículo de CARGA");
                     System.out.println("=================================================");

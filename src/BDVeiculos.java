@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -11,8 +12,8 @@ import java.util.List;
  * @author Administrador
  */
 public class BDVeiculos {
-    private List<Passeio> listaPasseio;
-    private List<Carga> listaCarga;
+    private List<Passeio> listaPasseio = new ArrayList<>();
+    private List<Carga> listaCarga = new ArrayList<>();
     
     public boolean verifPasseioExist(Passeio passeio) throws VeicExistException {
         for (int i = 0; i < listaPasseio.size(); i++) {
